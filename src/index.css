@@ -79,9 +79,27 @@ code {
 }
 
 .selected {
-  background-color: green;
+  background-color: #0090dd;
+  position: relative;
+  color: white;
+}
+
+.selected::after {
+  content: '';
+  border-top: 5px solid transparent;
+  border-left: 5px solid white;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid transparent;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 .absolute-container, .absolute-container * {
   position: absolute;
+}
+
+.first-menu {
+  margin: 10px 0;
+  padding-left: 5px;
 }
