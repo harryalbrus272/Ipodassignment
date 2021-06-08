@@ -97,6 +97,9 @@ code {
   top: 5px;
   right: 5px;
 }
+.absolute-container {
+  color: #000000ba;
+}
 
 .absolute-container, .absolute-container * {
   position: absolute;

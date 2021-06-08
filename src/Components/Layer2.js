@@ -1,8 +1,8 @@
 import React from "react";
 
 const Layer2 = ({ optSelected, options }) => {
-  console.log(optSelected);
-
+  //this component is rendered on the whole screen when the main-menu option is selected.
+  //Function returning the jsx component to the return at the bottom
   const Settings = () => {
     return (
       <div style={{ fontSize: "50px" }}>

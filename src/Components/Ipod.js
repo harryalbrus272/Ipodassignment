@@ -4,13 +4,17 @@ import Layer1 from "./Layer1";
 import Layer2 from "./Layer2";
 
 const Ipod = () => {
+  //variables to add the and subtract the values globally
   let tempDistanceChange = 0,
     tempSelected = 0;
+  //Array for the constant values
   const options = ["Games", "Music", "Settings", "Coverflow"];
+  const songSubMenu = ["All Songs", "Artists", "Albums"];
+  //state variables
   const [layer, setLayer] = useState(-1);
   const [optSelected, setOptSelected] = useState(0);
-  const songSubMenu = ["All Songs", "Artists", "Albums"];
 
+  //Function for changing the style of the options that has been selected
   let changeSelectedOptionStyle = () => {
     let target = document.getElementsByClassName("first-menu");
     if (target.length) {
@@ -23,24 +27,24 @@ const Ipod = () => {
     }
   };
 
+  //Function to calculate the distance and storing the state of the option selected to be passed on to layer2
   let changeSelectedOption = (dist) => {
     tempDistanceChange += dist;
     if (tempDistanceChange > 30) {
       tempSelected += 1;
       if (tempSelected > 3) tempSelected -= 4;
       setOptSelected(tempSelected);
-      console.log({ tempSelected });
       tempDistanceChange = 0;
     } else if (tempDistanceChange < -30) {
       tempSelected -= 1;
       if (tempSelected < 0) tempSelected = 3;
       setOptSelected(tempSelected);
-      console.log({ tempSelected });
       tempDistanceChange = 0;
     }
     changeSelectedOptionStyle();
   };
 
+  //The code block that is to be run once when the component has been rendered
   useEffect(() => {
     let zt = new Zingtouch.Region(
       document.getElementsByClassName("round-controls")[0]
@@ -55,15 +59,17 @@ const Ipod = () => {
     );
   }, []);
 
+  //function to increase the layer level when middle button is pressed
   const increaseLayerLevel = () => {
     if (layer > -1 && layer < 1) setLayer((prev) => prev + 1);
-    console.log("optSelected", optSelected);
   };
 
+  //function to decrease the layer level when middle button is pressed
   const decreaseLayerLevel = () => {
     setLayer((prev) => prev - 1);
   };
 
+  //To recognize the menu button is clicked. It reset to the topmost selection on closing the drawer on the home screen
   const menuClick = () => {
     if (layer === -1) {
       setLayer((prev) => prev + 1);
@@ -84,12 +90,9 @@ const Ipod = () => {
       <div className="control-container">
         <div className="round-controls">
           <div className="absolute-container">
-            <p
-              style={{ top: "-88px", left: "-20px", cursor: "default" }}
-              onClick={(event) => menuClick(event)}
-            >
-              Menu
-            </p>
+            <div style={{ top: "-76px", left: "-13px", fontSize: "30px" }} onClick={(event) => menuClick(event)}>
+              <i class="fas fa-bars"></i>
+            </div>
             <div style={{ top: "-16px", left: "45px", fontSize: "30px" }}>
               <i class="fas fa-fast-forward"></i>
             </div>

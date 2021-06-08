@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 
 const Layer1 = ({ options }) => {
+  //the clock sets the selected option as the topmost one after component render
+  //this layer can be reused for sub-layers if necessary
   useEffect(() => {
     let target = document.getElementsByClassName("first-menu");
     target[0].classList.add("selected");
