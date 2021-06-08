@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Zingtouch from "zingtouch";
 import Layer1 from "./Layer1";
+import Layer2 from "./Layer2";
 
 const Ipod = () => {
   let tempDistanceChange = 0,
     tempSelected = 0;
   const options = ["Games", "Music", "Settings", "Coverflow"];
   const [layer, setLayer] = useState(-1);
+  const [optSelected, setOptSelected] = useState(0);
   const [changeInAngle, setChangeInAngle] = useState(0);
   const [mainMenu, setMainMenu] = useState(false);
   const songSubMenu = ["All Songs", "Artists", "Albums"];
@@ -28,6 +30,8 @@ const Ipod = () => {
     if (tempDistanceChange > 30) {
       tempSelected += 1;
       if (tempSelected > 3) tempSelected -= 4;
+      setOptSelected(tempSelected);
+      console.log({ tempSelected });
       tempDistanceChange = 0;
       changeSelectedOptionStyle();
     }
@@ -48,7 +52,8 @@ const Ipod = () => {
   }, []);
 
   const increaseLayerLevel = () => {
-    setLayer((prev) => prev + 1);
+    if (layer > -1) setLayer((prev) => prev + 1);
+    console.log("optSelected", optSelected);
   };
 
   const decreaseLayerLevel = () => {
@@ -57,7 +62,7 @@ const Ipod = () => {
 
   const menuClick = () => {
     if (layer === -1) {
-      increaseLayerLevel();
+      setLayer((prev) => prev + 1);
       tempSelected = 0;
     } else {
       decreaseLayerLevel();
@@ -68,7 +73,8 @@ const Ipod = () => {
     <div className="outer-container">
       <div className="screen-container">
         <div className="screen"></div>
-        {layer === 0 ? <Layer1 options={options} /> : <div></div>}
+        {layer === 0 && <Layer1 options={options} />}
+        {layer === 1 && <Layer2 optSelected={optSelected} options={options} />}
       </div>
       <div className="control-container">
         <div className="round-controls">

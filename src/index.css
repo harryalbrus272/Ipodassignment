@@ -50,6 +50,7 @@ code {
   border: 3px solid black;
   border-radius:  0.3rem;
   height: 225px;
+  position: relative;
   background-image: url('https://images.unsplash.com/photo-1561074043-1b204dad0418?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=375&q=80');
 }
 
@@ -102,4 +103,18 @@ code {
 .first-menu {
   margin: 10px 0;
   padding-left: 5px;
+}
+
+.layer-2-screen {
+  position: absolute;
+  width: 97.5%;
+  height: 88%;
+  background-color: white;
+  top: 28px;
+  left: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  color: #000000c9;
+  flex-direction: column;
 }
