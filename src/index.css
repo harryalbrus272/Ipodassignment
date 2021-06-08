@@ -18,6 +18,7 @@ code {
 
 .outer-container {
   background-color: #d6d6d4;
+  box-shadow: inset 0px -10px 16px darkgrey, inset 0px -10px 16px darkgrey;
   width: 275px;
   height: 500px;
   border-radius: 2rem;
@@ -77,6 +78,7 @@ code {
   height: 75px;
   border-radius: 50%;
   background-color: #d6d6d4;
+  box-shadow: inset 0px -10px 16px darkgrey, inset 0px 4px 16px darkgrey;
 }
 
 .selected {

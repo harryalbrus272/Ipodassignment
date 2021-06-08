@@ -52,7 +52,7 @@ const Ipod = () => {
   }, []);
 
   const increaseLayerLevel = () => {
-    if (layer > -1) setLayer((prev) => prev + 1);
+    if (layer > -1 && layer < 1) setLayer((prev) => prev + 1);
     console.log("optSelected", optSelected);
   };
 
@@ -64,6 +64,7 @@ const Ipod = () => {
     if (layer === -1) {
       setLayer((prev) => prev + 1);
       tempSelected = 0;
+      setOptSelected(0);
     } else {
       decreaseLayerLevel();
     }
@@ -85,28 +86,16 @@ const Ipod = () => {
             >
               Menu
             </p>
-            <img
-              width="30px"
-              style={{ top: "-16px", left: "45px" }}
-              src="https://image.flaticon.com/icons/png/512/37/37700.png"
-              alt="fast-forward"
-            />
-            <img
-              width="30px"
-              style={{
-                transform: "rotate(180deg)",
-                top: "-16px",
-                left: "-76px",
-              }}
-              src="https://image.flaticon.com/icons/png/512/37/37700.png"
-              alt="fast-backward"
-            ></img>
-            <img
-              width="30px"
-              style={{ top: "48px", left: "-15px" }}
-              src="https://as2.ftcdn.net/v2/jpg/02/33/13/17/1000_F_233131743_n4HZ9683V4Zt4E5PP8XVK2efwPnVu3BY.jpg"
-              alt="play-pause"
-            ></img>
+            <div style={{ top: "-16px", left: "45px", fontSize: "30px" }}>
+              <i class="fas fa-fast-forward"></i>
+            </div>
+            <div style={{ top: "-16px", left: "-76px", fontSize: "30px" }}>
+              <i class="fas fa-fast-backward"></i>
+            </div>
+            <div style={{ top: "48px", left: "-11px", fontSize: "20px" }}>
+              <i style={{ top: "6px", left: "-6px" }} class="fas fa-play"></i>
+              <i style={{ top: "6px", left: "15px" }} class="fas fa-pause"></i>
+            </div>
           </div>
           <div
             className="select-button"
