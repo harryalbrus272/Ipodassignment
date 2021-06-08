@@ -90,18 +90,27 @@ const Ipod = () => {
       <div className="control-container">
         <div className="round-controls">
           <div className="absolute-container">
-            <div style={{ top: "-76px", left: "-13px", fontSize: "30px" }} onClick={(event) => menuClick(event)}>
-              <i class="fas fa-bars"></i>
+            <div
+              style={{ top: "-76px", left: "-13px", fontSize: "30px" }}
+              onClick={(event) => menuClick(event)}
+            >
+              <i className="fas fa-bars"></i>
             </div>
             <div style={{ top: "-16px", left: "45px", fontSize: "30px" }}>
-              <i class="fas fa-fast-forward"></i>
+              <i className="fas fa-fast-forward"></i>
             </div>
             <div style={{ top: "-16px", left: "-76px", fontSize: "30px" }}>
-              <i class="fas fa-fast-backward"></i>
+              <i className="fas fa-fast-backward"></i>
             </div>
             <div style={{ top: "48px", left: "-11px", fontSize: "20px" }}>
-              <i style={{ top: "6px", left: "-6px" }} class="fas fa-play"></i>
-              <i style={{ top: "6px", left: "15px" }} class="fas fa-pause"></i>
+              <i
+                style={{ top: "6px", left: "-6px" }}
+                className="fas fa-play"
+              ></i>
+              <i
+                style={{ top: "6px", left: "15px" }}
+                className="fas fa-pause"
+              ></i>
             </div>
           </div>
           <div
