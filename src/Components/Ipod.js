@@ -9,8 +9,6 @@ const Ipod = () => {
   const options = ["Games", "Music", "Settings", "Coverflow"];
   const [layer, setLayer] = useState(-1);
   const [optSelected, setOptSelected] = useState(0);
-  const [changeInAngle, setChangeInAngle] = useState(0);
-  const [mainMenu, setMainMenu] = useState(false);
   const songSubMenu = ["All Songs", "Artists", "Albums"];
 
   let changeSelectedOptionStyle = () => {
@@ -33,8 +31,14 @@ const Ipod = () => {
       setOptSelected(tempSelected);
       console.log({ tempSelected });
       tempDistanceChange = 0;
-      changeSelectedOptionStyle();
+    } else if (tempDistanceChange < -30) {
+      tempSelected -= 1;
+      if (tempSelected < 0) tempSelected = 3;
+      setOptSelected(tempSelected);
+      console.log({ tempSelected });
+      tempDistanceChange = 0;
     }
+    changeSelectedOptionStyle();
   };
 
   useEffect(() => {
@@ -45,7 +49,7 @@ const Ipod = () => {
       document.getElementsByClassName("round-controls")[0],
       "rotate",
       (event) => {
-        let dist = Math.abs(event.detail.distanceFromLast);
+        let dist = event.detail.distanceFromLast;
         changeSelectedOption(dist);
       }
     );
